@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Eserciziario di Analisi 1 - Laura Mereu, Augusta Nanni</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <style>
+  .container {
+  max-width: 800px; }
+.header {
+  margin-top: 6rem;
+  text-align: center; }
+.value-prop {
+  margin-top: 1rem; }
+.value-props {
+  margin-top: 4rem;
+  margin-bottom: 4rem; }
+.docs-header {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: .2rem;
+  font-weight: 600; }
+.docs-section {
+  border-top: 1px solid #eee;
+  padding: 4rem 0;
+  margin-bottom: 0;}
+.value-img {
+  display: block;
+  text-align: center;
+  margin: 2.5rem auto 0; }
+.example-grid .column,
+.example-grid .columns {
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  letter-spacing: .1rem; }
+.docs-example .row,
+.docs-example.row,
+.docs-example form {
+  margin-bottom: 0; }
+.docs-example h1,
+.docs-example h2,
+.docs-example h3,
+.docs-example h4,
+.docs-example h5,
+.docs-example h6 {
+  margin-bottom: 1rem; }
+.heading-font-size {
+  font-size: 1.2rem;
+  color: #999;
+  letter-spacing: normal; }
+.code-example {
+  margin-top: 1.5rem;
+  margin-bottom: 0; }
+.code-example-body {
+  white-space: pre;
+  word-wrap: break-word }
+.example {
+  position: relative;
+  margin-top: 4rem; }
+.example-header {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: .5rem; }
+.example-description {
+  margin-bottom: 1.5rem; }
+.example-screenshot-wrapper {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  height: 250px; }
+.example-screenshot {
+  width: 100%;
+  height: auto; }
+.example-screenshot.coming-soon {
+  width: auto;
+  position: absolute;
+  background: #eee;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px; }
+.navbar {
+  display: none; }
+
+/* Larger than phone */
+@media (min-width: 550px) {
+  .header {
+    margin-top: 18rem; }
+  .value-props {
+    margin-top: 9rem;
+    margin-bottom: 7rem; }
+  .value-img {
+    margin-bottom: 1rem; }
+  .example-grid .column,
+  .example-grid .columns {
+    margin-bottom: 1.5rem; }
+  .docs-section {
+    padding: 6rem 0; }
+  .example-send-yourself-copy {
+    float: right;
+    margin-top: 12px; }
+  .example-screenshot-wrapper {
+    position: absolute;
+    width: 48%;
+    height: 100%;
+    left: 0;
+    max-height: none; }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  /* Navbar */
+  .navbar + .docs-section {
+    border-top-width: 0; }
+  .navbar,
+  .navbar-spacer {
+    display: block;
+    width: 100%;
+    height: 6.5rem;
+    background: #fff;
+    z-index: 99;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee; }
+  .navbar-spacer {
+    display: none; }
+  .navbar > .container {
+    width: 100%; }
+  .navbar-list {
+    list-style: none;
+    margin-bottom: 0; }
+  .navbar-item {
+    position: relative;
+    float: left;
+    margin-bottom: 0; }
+  .navbar-link {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2rem;
+    margin-right: 35px;
+    text-decoration: none;
+    line-height: 6.5rem;
+    color: #222; }
+  .navbar-link.active {
+    color: #33C3F0; }
+  .has-docked-nav .navbar {
+    position: fixed;
+    top: 0;
+    left: 0; }
+  .has-docked-nav .navbar-spacer {
+    display: block; }
+  /* Re-overiding the width 100% declaration to match size of % based container */
+  .has-docked-nav .navbar > .container {
+    width: 80%; }
+
+  /* Popover */
+  .popover.open {
+    display: block;
+  }
+  .popover {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    top: 92%;
+    left: -50%;
+    -webkit-filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
+       -moz-filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
+            filter: drop-shadow(0 0 6px rgba(0,0,0,.1)); }
+  .popover-item:first-child .popover-link:after,
+  .popover-item:first-child .popover-link:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .popover-item:first-child .popover-link:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px; }
+  .popover-item:first-child .popover-link:before {
+    border-color: rgba(238, 238, 238, 0);
+    border-bottom-color: #eee;
+    border-width: 11px;
+    margin-left: -11px; }
+  .popover-list {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+  .popover-item {
+    padding: 0;
+    margin: 0; }
+  .popover-link {
+    position: relative;
+    color: #222;
+    display: block;
+    padding: 8px 20px;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.0rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: .1rem; }
+  .popover-item:first-child .popover-link {
+    border-radius: 4px 4px 0 0; }
+  .popover-item:last-child .popover-link {
+    border-radius: 0 0 4px 4px;
+    border-bottom-width: 0; }
+  .popover-link:hover {
+    color: #fff;
+    background: #33C3F0; }
+  .popover-link:hover,
+  .popover-item:first-child .popover-link:hover:after {
+    border-bottom-color: #33C3F0; }
+}
+  </style>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="width: auto; margin-top: 100px; text-align: center;">
+    <h1>Esercizi di Analisi 1</h1>
+        <p>Laura Mereu e Augusta Nanni.</p>
+    <img style="max-width: 50%; margin-top: 50px;" src="images/idealcity.jpg"></img>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 10%">
+        Questo testo contiene una collezione di esercizi rivolti agli studenti che devono
+affrontare la prova scritta del primo esame universitario di Analisi Matematica. <br> <br>
+La materia è divisa in capitoli, a loro volta divisi in paragrafi. <br> <br>
+Lo studente può cliccare sul titolo del paragrafo per visualizzare un PDF contenente
+esercizi relativi all’argomento. <br> <br>
+All’inizio di ogni paragrafo vengono esposti i concetti in forma sintetica e con schemi
+riepilogativi a cui fanno seguito le applicazioni spiegate attraverso esempi. <br> <br>
+Ogni argomento è corredato da numerosi esercizi graduati per difficoltà le cui
+soluzioni si trovano a fine paragrafo. Molti esercizi, considerati più complessi, sono
+contrassegnati con la notazione * a indicare che la soluzione è guidata. <br> <br>
+In molti capitoli sono presenti esercizi di riepilogo che permettono allo studente di
+valutare il grado di preparazione raggiunto.
+      </div>
+    </div>
+
+    <br><br>
+
+    <!-- <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
+          <li class="navbar-item">
+            <a class="navbar-link" href="#" data-popover="#codeNavPopover">Capitoli</a>
+            <div id="codeNavPopover" class="popover">
+              <ul class="popover-list">
+                <li class="popover-item">
+                  <a class="popover-link" href="#grid">Capitolo 1</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#typography">Capitolo 2</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="navbar-item"><a class="navbar-link" href="#intro">Autori</a></li>
+
+        </ul>
+      </div>
+    </nav> -->
+
+    <!-- <div id="capitoli">
+      <div class="docs-header" style="margin-top: 5%"> Capitoli </div><br>
+      <ul>
+        <li>Capitolo 1</li>
+        <li>
+          Capitolo 2
+          <ul>
+            <li>Paragrafo 2.1</li>
+            <li>Paragrafo 2.2</li>
+          </ul>
+        </li>
+        <li>Capitolo 3</li>
+        </ul>
+    </div>
+
+ -->
+ <div style="margin-bottom: 100px" id="autori">
+  <div class="docs-header" style="margin-top: 5%"> Autori </div><br>
+  <div>Le autrici di questo lavoro hanno già curatopassati, in collaborazione con il Prof. Lamberto Lamberti, la Sapienza-Roma,
+    la stesura di numerosi testi di matematica per i licei, fornendo una trattazione degli argomenti in forma
+    rigorosa propedeutica agli studi universitari.</div><br>
+  <div>Laura Mereu - Augusta Nanni</div>
+  <div></div><br>
+  <!-- <div>Realizzazione web a cura dell’Ing. Sara Di Bartolomeo – Northeastern University,
+    Boston</div> -->
+</div>
+
+ <h2>Elenco dei capitoli</h2>
+ <div id="app">
+  <ol>
+    <li v-for="chapter in chapters">
+      {{ chapter.title }}
+      <ol>
+        <li v-for="subchapter in chapter.subchapters">
+          <a v-bind:href="'ANALISI-PDF/' + chapter.folder + '/' + subchapter.filename">{{ subchapter.title }}</a>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</div>
+
+</div>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+<script>
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    chapters: [
+      {
+        title: 'Proprietà degli insiemi in 𝐑 e 𝐑²',
+        folder: "PROPRIETA_ DEGLI INSIEMI IN R E IN R2-PDF",
+        subchapters: [
+          {
+            title: 'Proprietà degli insiemi in 𝐑',
+            filename: '1. PROPRIETA_ DEGLI INSIEMI IN R.pdf'
+          },
+          {
+            title: 'Proprietà degli insiemi in 𝐑²',
+            filename: '2. PROPRIETA_ DEGLI INSIEMI IN R2.pdf'
+          },
+        ]
+        },
+      {
+        title: 'Funzioni - Domini - Proprietà',
+        folder: "FUNZIONI-DOMINIO-PROPRIETA_-PDF",
+        subchapters: [
+          {
+            title: 'Grafici di funzioni elementari',
+            filename: "1. GRAFICI DI FUNZIONI ELEMENTARI.pdf"
+          },
+          {
+            title: 'Dominio e codominio di una funzione',
+            filename: "2.DOMINIO E CODOMINIO DI UNA FUNZIONE.pdf"
+          },
+          {
+            title: 'Funzioni pari e dispari',
+            filename: "3. FUNZIONI PARI E DISPARI.pdf"
+          },
+          {
+            title: 'Funzioni monòtone',
+            filename: "4. FUNZIONI MONOTONE.pdf"
+          },
+          {
+            title: 'Funzioni invertibili',
+            filename: "5.FUNZIONI INVERTIBILIi.pdf"
+          },
+          {
+            title: 'Funzioni composte',
+            filename: "6. FUNZIONI COMPOSTE.pdf"  
+          },
+          {
+            title: 'Grafici deducibili',
+            filename: "7.GRAFICI DEDUCIBILI.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Limiti',
+        folder: "LIMITI-PDF",
+        subchapters: [
+          {
+            title: 'Verifiche di limiti',
+            filename: '1. VERIFICHE DI LIMITI.pdf'
+          },
+          {
+            title: 'Operazioni sui limiti - Limiti fondamentali',
+            filename: "2. OPERAZIONI SUI LIMITI-LIMITI FONDAMENTALI-bis.pdf"
+          },
+          {
+            title: "Limiti all'infinito di funzioni razionali",
+            filename: "3. LIMITI ALL_INFINITO DI FUNZIONI RAZIONALI-bis.pdf"
+          },
+        ]
+      },
+      {
+        title: 'Funzioni continue',
+        folder: "FUNZIONI CONTINUE-PDF",
+        subchapters: [
+          {
+            title: 'Limiti di funzioni continue in un punto',
+            filename: "1. LIMITI DI FUNZIONI CONTINUE IN UN PUNTO..pdf"
+          },
+          {
+            title: 'Limiti di forme indeterminate',
+            filename: "2.LIMITI DI FORME INDETERMINATE.pdf"
+          },
+          {
+            title: 'Limiti notevoli',
+            filename: "3.lIMITI NOTEVOLI.pdf"
+          },
+          {
+            title: 'Punti di discontinuità',
+            filename: "4.PUNTI DI DISCONTINUITA.pdf"
+          },
+          {
+            title: "Infinitesimi e infiniti",
+            filename: "5.INFINITESIMI E INFINITI.pdf"
+          },
+          {
+            title: 'Asintoti',
+            filename: "6. ASINTOTI.pdf"
+          },
+          {
+            title: 'Teoremi sulle funzioni continue',
+            filename: "7.TEOREMI SULLE FUNZIONI CONTINUE.pdf"  
+          }
+        ]
+      },
+      {
+        title: 'Calcolo differenziale',
+        folder: "CALCOLO DIFFERENZIALE-PDF",
+        subchapters: [
+          {
+            title: 'Definizione di derivata',
+            filename: "1. DEFINIZIONE DI DERIVATA.pdf"
+          },
+          {
+            title: 'Regole di derivazione',
+            filename: "2. REGOLE DI DERIVAZIONE.pdf"
+          },
+          {
+            title: 'Derivata della funzione composta FIX HERE',
+            filename: "3. DERIVATA DELLA FUNZIONE COMPOSTA f(g(x)) - DERIVATA DI f(x)^g(x).pdf"
+          },
+          {
+            title: 'Derivata della funzione inversa',
+            filename: "4. DERIVATA DELLA FUNZIONE INVERSA.pdf"
+          },
+          {
+            title: 'Equazione della retta tangente',
+            filename: "5. EQUAZIONE DELLA RETTA TANGENTE.pdf"
+          },
+          {
+            title: 'Studio della continuità e derivabilità',
+            filename: "6.STUDIO DELLA CONTINUITA_ E DERIVABILITA_.pdf"
+          },
+          {
+            title: 'Differenziale - Calcolo approssimato',
+            filename: "7.DIFFERENZIALE-CALCOLO APPROSSIMATO.pdf"
+          },
+          {
+            title: 'Teoremi di Rolle - Cauchy - Lagrange',
+            filename: "8.TEOREMI DI ROLLE-CAUCHY-LAGRANGE.pdf"
+          },
+          {
+            title: "Teorema di De L'Hopital",
+            filename: "9.TEOREMA DI DE L_HOPITAL.pdf"
+          },
+          {
+            title: "Funzioni crescenti e decrescenti - Massimi, minimi, flessi a tangente orizontale",
+            filename: "10.FUNZIONI CRESCENTI E DECRESCENTI-MASSIMI, MINIMI,FLESSI A TANGENTE ORIZZONTALE.pdf"
+          },
+          {
+            title: "Convessità, concavità, flessi",
+            filename: "11.CONVESSITA_, CONCAVITA_, FLESSI.pdf"
+          },
+          {
+            title: "Punti di non derivabilità",
+            filename: "12.PUNTI DI NON DERIVABILITA_.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Grafici di funzioni',
+        folder: "GRAFICI DI FUNZIONI-PDF",
+        subchapters: [
+          {
+            title: 'Studio di grafici di funzioni',
+            filename: "1.GRAFICI DI FUNZIONI.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Successioni numeriche',
+        folder: "SUCCESSIONI NUMERICHE-PDF",
+        subchapters: [
+          {
+            title: "Limite di una successione",
+            filename: "1. LIMITE DI UNA SUCCESSIONE.pdf"
+          },
+          {
+            title: "Verifiche di limiti",
+            filename: "2.VERIFICHE DI LIMITI.pdf"
+          },
+          {
+            title: "Successioni monotone",
+            filename: "3.SUCCESSIONI MONOTONE.pdf"
+          },
+          {
+            title: "Successioni geometriche",
+            filename: "4.SUCCESSIONI GEOMETRICHE.pdf"
+          },
+          {
+            title: "Limiti notevoli",
+            filename: "5.LIMITI NOTEVOLI.pdf"
+          },
+          {
+            title: "Confronto di successioni infinite",
+            filename: "6.CONFRONTO DI SUCCESSIONI INFINITE.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Serie numeriche',
+        folder: "SERIE NUMERICHE-PDF",
+        subchapters: [
+          {
+            title: "Prime nozioni",
+            filename: "1.PRIME NOZIONI.pdf"
+          },
+          {
+            title: "Serie geometriche",
+            filename: "2. SERIE GEOMETRICHE.pdf"
+          },
+          {
+            title: "Serie di Mengoli - Serie telescopiche",
+            filename: "3.SERIE DI MENGOLI - SERIE TELESCOPICHE.pdf"
+          },
+          {
+            title: "Combinazioni lineari di serie",
+            filename: "4. COMBINAZIONI LINEARI DI SERIE.pdf"
+          },
+          {
+            title: "Serie armonica, serie armonica generalizzata",
+            filename: "5. SERIE ARMONICA, SERIE ARMONICA GENERALIZZATA.pdf"
+          },
+          {
+            title: "Serie a termini di segno costante",
+            filename: "6. SERIE A TERMINI DI SEGNO COSTANTE.pdf"
+          },
+          {
+            title: "Convergenza assoluta",
+            filename: "7.  CONVERGENZA ASSOLUTA.pdf"
+          },
+          {
+            title: "Serie a termini di segno alternato - Criterio di Leibniz",
+            filename: "8. SERIE A TERMINI DI SEGNO ALTERNATO-CRITERIO DI LEIBNIZ.pdf"
+          },
+          {
+            title: "Esercizi di riepilogo",
+            filename: "9. ESERCIZI DI RIEPILOGO.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Polinomi di Taylor - Calcolo di Limiti',
+        folder: "POLINOMI DI TAYLOR-CALCOLO DI LIMITI-PDF",
+        subchapters: [
+          {
+            title: 'Definizione di o piccolo',
+            filename: "1.  DEFINIZIONE DI O PICCOLO .pdf"
+          },
+          {
+            title: 'Formula di Taylor e di Mac-Laurin con resto secondo Peano',
+            filename: "2.  FORMULA DI TAYLOR E DI MAC LAURIN CON RESTO SECONDO PEANO.pdf"
+          },
+          {
+            title: 'Limiti di forme indeterminate mediante gli sviluppi di Taylor e Mac-Laurin',
+            filename: "3. LIMITI DI FORME INDETERMINATE MEDIANTE GLI SVILUPPI DI TAYLOR E MAC LAUREN.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Integrali indefiniti',
+        folder: "INTEGRALI INDEFINITI-PDF",
+        subchapters: [
+          {
+            title: "Definizioni e proprietà",
+            filename: "1.DEFINIZIONI E PROPRIETA_.pdf"
+          },
+          {
+            title: "Integrali indefiniti immediati",
+            filename: "2. INTEGRALI INDEFINITI IMMEDIATI.pdf"
+          },
+          {
+            title: "Integrazione di alcune funzioni razionali fratte",
+            filename: "3.INTEGRAZIONE DI ALCUNE FUNZIONI RAZIONALI FRATTE.pdf"
+          },
+          {
+            title: "Integrazione per sostituzione",
+            filename: "4.INTEGRAZIONE PER SOSTITUZIONE.pdf"
+          },
+          {
+            title: "Integrazione per parti",
+            filename: "5.INTEGRAZIONE PER PARTI.pdf"
+          },
+          {
+            title: "Esercizi di riepilogo",
+            filename: "6.ESERCIZI DI RIEPILOGO.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Integrali definiti',
+        folder: "INTEGRALI DEFINITI-PDF",
+        subchapters: [
+          {
+            title: "Integrale definito come limite di una somma",
+            filename: "1.INTEGRALE DEFINITO COME LIMITE DI UNA SOMMA.pdf"
+          },
+          {
+            title: "La funzione integrale - Il teorema di Torricelli-Barrow",
+            filename: "2.LA FUNZIONE INTEGRALE-IL TEOREMA DI TORRICELLI-BARROW.pdf"
+          },
+          {
+            title: "Integrali definiti per sostituzione",
+            filename: "3.INTEGRALI DEFINITI PER SOSTITUZIONE.pdf"
+          },
+          {
+            title: "Teorema della media",
+            filename: "4.TEOREMA DELLA MEDIA.pdf"
+          },
+          {
+            title: "Grafico della funzione integrale",
+            filename: "5.GRAFICO DELLA FUNZIONE INTEGRALE.pdf"
+          },
+          {
+            title: "Significato geometrico dell'integrale definito",
+            filename: "6.SIGNIFICATO GEOMETRICO DELL_INTEGRALE DEFINITO.pdf"
+          },
+          {
+            title: "Volumi dei solidi di rotazione",
+            filename: "7.VOLUMI DEI SOLIDI DI ROTAZIONE.pdf"
+          },
+          {
+            title: "Integrali impropri",
+            filename: "8.INTEGRALI IMPROPRI.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Equazioni differenziali',
+        folder: "EQUAZIONI DIFFERENZIALI-PDF",
+        subchapters: [
+          {
+            title: "Premessa",
+            filename: "1. PREMESSA.pdf"
+          },
+          {
+            title: "L'equazione lineare del primo ordine a coefficienti costanti",
+            filename: "2. L’EQUAZIONE LINEARE DEL PRIMO ORDINE  y_=ay+b.pdf"
+          },
+          {
+            title: "L'equazione lineare",
+            filename: "3. L’EQUAZIONE LINEARE y_=a(x)y+b(x).pdf"
+          },
+          {
+            title: "Equazioni lineari del secondo ordine a coefficienti costanti omogenee",
+            filename: "4. EQUAZIONI LINEARI DEL SECONDO ORDINE A COEFFICIENTI COSTANTI OMOGENEE .pdf"
+          },
+          {
+            title: "Equazioni lineari del secondo ordine a coefficienti costanti non omogenee",
+            filename: "5. EQUAZIONI LINEARI DEL SECONDO ORDINE A COEFFICIENTI COSTANTI NON OMOGENEE .pdf"
+          },
+          {
+            title: "Equazioni differenziali a variabili separabili",
+            filename: "6. EQUAZIONI DIFFERENZIALI A VARIABILI SEPARABILI.pdf"
+          },
+          {
+            title: "Applicazioni",
+            filename: "7. APPLICAZIONI.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Funzioni in due variabili',
+        folder: "FUNZIONI IN DUE VARIABILI-PDF",
+        subchapters: [
+          {
+            title: "Funzioni di due variabili - Dominio",
+            filename: "1. FUNZIONI IN DUE VARIABILI-DOMINIO.pdf"
+          },
+          {
+            title: "Linee di livello",
+            filename: "2.LINEE DI LIVELLO.pdf"
+          },
+          {
+            title: "Derivate parziali",
+            filename: "3. DERIVATE PARZIALI.pdf"
+          },
+          {
+            title: "Piano tangente e retta normale a una superficie",
+            filename: "4. PIANO TANGENTE E RETTA NORMALE A UNA SUPERFICIE.pdf"
+          },
+          {
+            title: "Differenziale totale",
+            filename: "5. DIFFERENZIALE TOTALE.pdf"
+          },
+          {
+            title: "Derivate del secondo ordine",
+            filename: "6. DERIVATE DEL SECONDO ORDINE.pdf"
+          },
+          {
+            title: "Massimi e minimi",
+            filename: "7. MASSIMI E MINIMI.pdf"
+          },
+          {
+            title: "Massimi e minimi vincolati. Metodo dei moltiplicatori di Lagrange",
+            filename: "8. MASSIMI E MINIMI-METODO DEI MOLTIPLICATORI DI LAGRANGE.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Nozioni di geometria analitica nello spazio',
+        folder: "NOZIONI DI GEOMETRIA ANALITICA NELLO SPAZIO-PDF",
+        subchapters: [
+          {
+            title: "Punti - Rette - Piani",
+            filename: "1. PUNTI - RETTE - PIANI.pdf"
+          },
+          {
+            title: "La sfera",
+            filename: "2. LA SFERA.pdf"
+          }
+        ]
+      },
+      {
+        title: 'I numeri complessi',
+        folder: "I NUMERI COMPLESSI-PDF",
+        subchapters: [
+          {
+            title: "Prime definizioni - Operazioni",
+            filename: "1. I NUMERI COMPLESSI.pdf"
+          },
+          {
+            title: "Esponenziale complesso",
+            filename: "2. ESPONENZIALE COMPLESSO.pdf"
+          },
+          {
+            title: "Potenza n-ma di un numero complesso",
+            filename: "3.POTENZA N-MA DI UN NUMERO COMPLESSO.pdf"
+          },
+          {
+            title: "Radici n-me di un numero complesso",
+            filename: "4. RADICI  N-SIME DI UN NUMERO COMPLESSO.pdf"
+          },
+          {
+            title: "Equazioni",
+            filename: "5. EQUAZIONI.pdf"
+          }
+        ]
+      },
+      {
+        title: 'Matrici - Sistemi lineari',
+        folder: "MATRICI-SISTEMI LINEARI-PDF",
+        subchapters: [
+          {
+            title: "Definizioni - Operazioni con le matrici",
+            filename: "1. DEFINIZIONI-OPERAZIONI CON LE MATRICI.pdf"
+          },
+          {
+            title: "Determinante di una matrice quadrata",
+            filename: "2. DETERMINANTE DI UNA MATRICE QUADRATA.pdf"
+          },
+          {
+            title: "Rango di una matrice",
+            filename: "3. RANGO DI UNA MATRICE.pdf"
+          },
+          {
+            title: "Matrice inversa",
+            filename: "4. MATRICE INVERSA.pdf"
+          },
+          {
+            title: "Sistemi di equazioni lineari - Teoremi fondamentali",
+            filename: "5. SISTEMI DI EQUAZIONI LINEARI-TEOREMI FONDAMENTALI.pdf"
+          },
+          {
+            title: "Risoluzione di un sistema lineare",
+            filename: "6. RISOLUZIONE DI UN SISTEMA LINEARE.pdf"
+          },
+          {
+            title: "Interpretazione vettoriale - Dipendenza e indipendenza lineare",
+            filename: "7. INTERPRETAZIONE VETTORIALE. DIPENDENZA E INDIPENDENZA VETTORIALE.pdf"
+          }
+        ]
+      }
+    ]
+  }
+})
+
+</script>
+
+</html>
